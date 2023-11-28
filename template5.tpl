@@ -1,0 +1,1 @@
+{{ .GetFile "/etc/passwd" }}
