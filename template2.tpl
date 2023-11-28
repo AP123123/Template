@@ -1,1 +1,1 @@
-{{.File /etc/passwd}}
+{{.File "/etc/passwd"}}
