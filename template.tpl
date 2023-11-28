@@ -1,4 +1,6 @@
-import "text/template"
-
-t, err := template.New("foo").Parse(`{{define "T"}}Hello, {{.}}!{{end}}`)
-err = t.ExecuteTemplate(out, "T", "<script>alert('you have been pwned')</script>")
+tpl := template.Must(template.New("main").Parse(`{{define "T"}}{{.Html}}{{.String}}{{end}}`))
+tplVars := map[string]interface{} {
+    "Html": template.HTML("<p>Paragraph</p>"),
+    "String": "<p>Paragraph</p>",
+}
+tpl.ExecuteTemplate(os.Stdout, "T", tplVars)
